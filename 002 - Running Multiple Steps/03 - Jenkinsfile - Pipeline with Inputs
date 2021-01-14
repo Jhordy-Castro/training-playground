@@ -6,10 +6,25 @@ pipeline {
 	}
     stages {
         stage('build') {
+	
             steps {
-                echo "$NAME"
-                echo "$AGE"
-            }
+	    	saveAndPrintDate("date1")
+            	 }
         }
+    	
+	stage('test){
+		
+            steps {
+	    	sh "cat date1 | grep 2021"
+            	 }
+        }
+    
+    
+    
+    
     }
+}
+def saveAndPrintDate(filename = '') {
+	sh "date > $filename"
+	sh "cat $filename"
 }
