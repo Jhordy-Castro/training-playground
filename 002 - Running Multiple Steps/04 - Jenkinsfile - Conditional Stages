@@ -6,16 +6,23 @@ pipeline {
 	}
 	
     parameters{
-    	string(name : "NAME", defaultValue : 'Mr.Jenkins', description : 'Whats your name')
-	string(name : "AGE", defaultValue : '0', description : 'Whats your age')
+    	//string(name : "NAME", defaultValue : 'Mr.Jenkins', description : 'Whats your name')
+	//string(name : "AGE", defaultValue : '0', description : 'Whats your age')
+	string(name : "TOEXECUTE", defaultValue : 'defaultExecute', description : 'ToExecute?')
     }
 	
     stages {
     	stage('build'){
-		steps{
-		echo"$NAME"
-		echo"$AGE"
+		when {
+			environment name : 'TOEXECUTE', value: 'build'
 		}
 	}
+	
+	stage('test'){
+		when {
+			environment name : 'TOEXECUTE', value: 'test'
+		}
+	}
+	
     }
 }
