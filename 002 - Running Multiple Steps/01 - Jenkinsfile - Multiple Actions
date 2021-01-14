@@ -5,7 +5,7 @@ pipeline {
 		}
 	}
     stages {
-    	stage ('build'){
+    	stage ('test'){
 		steps{
 			saveAndPrintDate("date1")
 			sh "sleep 10s"
