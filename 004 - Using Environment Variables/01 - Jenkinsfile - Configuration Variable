@@ -4,6 +4,10 @@ pipeline {
 			image 'alpine:latest' 
 		}
 	}
+	 environment {
+            NOTIFICATION_EMAIL = 'Benfica'
+    }
+	
     stages {
         stage('build') {
             steps {
